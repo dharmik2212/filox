@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+ENV/
+myenv/
+
+
+# FastAPI & Database
+*.db
+*.sqlite
+*.sqlite3
+.env
+uploads/
+
+# Node/Mobile
+node_modules/
+npm-debug.log
+.expo/
+.expo-shared/
+dist/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# ML Training
+ml_training/dataset/
+ml_training/outputs/
+*.pt
+*.pth
+*.ckpt
+
+# Logs
+*.log
+logs/
+
+# Misc
+.cache
+.pytest_cache
+.mypy_cache/
+.coverage
+htmlcov/

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Filox Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#f39cfb",
+                    "on-secondary": "#f2f1ff",
+                    "on-tertiary": "#ffeefb",
+                    "primary": "#0058ba",
+                    "primary-fixed": "#6c9fff",
+                    "surface-container-high": "#dde1ff",
+                    "surface-container-highest": "#d5dbff",
+                    "on-secondary-fixed": "#00298c",
+                    "on-tertiary-fixed-variant": "#6a1f77",
+                    "on-error": "#ffefee",
+                    "outline-variant": "#a2abd7",
+                    "tertiary-fixed": "#f39cfb",
+                    "on-background": "#232c51",
+                    "surface-dim": "#cad2ff",
+                    "surface-variant": "#d5dbff",
+                    "on-secondary-container": "#1f3ea2",
+                    "on-error-container": "#570008",
+                    "tertiary-fixed-dim": "#e48fed",
+                    "on-surface": "#232c51",
+                    "surface": "#f7f5ff",
+                    "inverse-on-surface": "#929bc6",
+                    "on-primary-fixed-variant": "#002a60",
+                    "on-primary-container": "#00214e",
+                    "error-container": "#fb5151",
+                    "on-secondary-fixed-variant": "#2b48ac",
+                    "on-tertiary-fixed": "#41004d",
+                    "background": "#f7f5ff",
+                    "on-primary-fixed": "#000000",
+                    "primary-dim": "#004da4",
+                    "secondary": "#3854b7",
+                    "secondary-fixed": "#c6cfff",
+                    "tertiary": "#883c93",
+                    "error": "#b31b25",
+                    "tertiary-dim": "#7a2f86",
+                    "on-primary": "#f0f2ff",
+                    "inverse-primary": "#4a8eff",
+                    "error-dim": "#9f0519",
+                    "surface-bright": "#f7f5ff",
+                    "surface-tint": "#0058ba",
+                    "secondary-fixed-dim": "#b3c1ff",
+                    "surface-container": "#e4e7ff",
+                    "inverse-surface": "#020a2f",
+                    "secondary-dim": "#2a47ab",
+                    "secondary-container": "#c6cfff",
+                    "outline": "#6c759e",
+                    "surface-container-low": "#efefff",
+                    "primary-fixed-dim": "#5091ff",
+                    "on-surface-variant": "#505a81",
+                    "primary-container": "#6c9fff",
+                    "on-tertiary-container": "#60136d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface selection:bg-primary/20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-2xl flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="Plus Jakarta Sans headline-sm tracking-tight font-bold text-blue-700 dark:text-blue-300">Filox</span>
+</div>
+<!-- Center Search Bar (Google Photos Style) -->
+<div class="hidden md:flex flex-1 max-w-2xl mx-8">
+<div class="w-full flex items-center gap-3 px-4 py-2.5 rounded-full bg-surface-container-low hover:bg-surface-container-high transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant/70 group-hover:text-primary transition-colors" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-medium placeholder:text-on-surface-variant/50" placeholder="Search your memories" type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-surface-container-highest/50 transition-all active:scale-90 md:hidden">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-primary/10 hover:ring-primary/40 transition-all cursor-pointer active:scale-95">
+<img class="w-full h-full object-cover" data-alt="professional male headshot with a friendly expression in soft studio lighting, clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeNfBgsqqz9JlGhtRuU7kRe-9PKgzdYK8AeVuxVimoa4zGUJNQ01Fk4ACZpFpXuisHp38QHVzwXNfbPqr73uh74MWDemplkKtD0cLpXZQv3UKcxJSU8wyd_E5EGwBfScyVU7k05q90C-w0j5JYS8dJolfZa95xJ3pRXGikw3aRWMH0iQb2Hk8tp_bGfSCRN5c0LP14IYtlsdJ5Y-pjSVa9qN6PPZqYlSpsKxWcCBx010X4DGbiHpY0-6uoiivfh0XYXhf-iBE9"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Welcome Header -->
+<section class="mb-10">
+<h1 class="font-headline text-3xl font-bold tracking-tight text-on-surface mb-2">Good morning, Alex</h1>
+<p class="text-on-surface-variant font-medium">Your memories from this week are ready.</p>
+</section>
+<!-- Storage & Status Bento Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Storage Card -->
+<div class="md:col-span-2 p-8 rounded-lg bg-surface-container-lowest shadow-sunlight-ambient flex flex-col justify-between group">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-on-surface font-headline text-xl font-bold mb-1">Account Storage</h3>
+<p class="text-on-surface-variant text-sm font-medium">75% of 15 GB used</p>
+</div>
+<div class="p-3 rounded-full bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined" data-icon="cloud_done">cloud_done</span>
+</div>
+</div>
+<div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden mb-4">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container rounded-full" style="width: 75%"></div>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 rounded-full bg-gradient-to-br from-primary to-primary-container text-white font-bold text-sm hover:scale-105 transition-transform active:scale-95">Get more storage</button>
+<button class="px-6 py-2.5 rounded-full text-primary font-bold text-sm hover:bg-surface-container-high transition-all">Clean up</button>
+</div>
+</div>
+</div>
+<!-- Quick Action Card -->
+<div class="p-8 rounded-lg bg-surface-container-high/50 flex flex-col justify-center items-center text-center gap-4">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-3xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">Rediscover this day</h4>
+<p class="text-sm text-on-surface-variant mt-1">4 years ago in San Francisco</p>
+</div>
+<button class="mt-2 text-primary font-bold text-sm underline-offset-4 hover:underline">View Memory</button>
+</div>
+</div>
+<!-- Smart Recommendations Section -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline text-2xl font-bold tracking-tight">Smart Recommendations</h2>
+<button class="text-primary font-bold text-sm hover:bg-primary/5 px-4 py-2 rounded-full transition-all">View all</button>
+</div>
+<!-- Bento Grid Recommendations -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+<!-- Large Featured Rec -->
+<div class="col-span-2 row-span-2 relative rounded-lg overflow-hidden group cursor-pointer aspect-square md:aspect-auto">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="scenic mountain lake at sunset with calm reflective water and vibrant orange sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCASHr1NUXS4VNOoaZi810rLNH2hx4yz-SDHKsHGCeQ8DvGZAh0pTtPs-cpt3DcD7rEMg6lzUzNoyLwZtQCYJ2kxsFgduKcrSvbs6SSM2CevBQW1HsScPUZuiCAylGGdnnvnULVVwz1SIf_WEwSpQQwbmUhmAiiPpECadQLFLP6dT_JXmUTaYQKQOSyq60ekFTh0hxUQi1lBwFuDYjwcQ16ltFsPfauG_Necx6jTLz8250V-exQih1VVKfeTzr6gouniwOVfZ0C"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
+<span class="text-white/80 text-xs font-bold tracking-widest mb-1">SUGGESTED ALBUM</span>
+<h3 class="text-white font-headline text-2xl font-bold">Summer Retreat 2023</h3>
+<p class="text-white/70 text-sm mt-1">45 photos merged automatically</p>
+</div>
+</div>
+<!-- Secondary Recs -->
+<div class="relative rounded-lg overflow-hidden group cursor-pointer aspect-square">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="minimalist architecture with clean lines and soft blue shadows against a clear sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClXI9OimpRMOOWUjZjaFSYgUj6kIfaeO76hQMMzcF2AnyuyJoNom1NBLnCA2ozPg38RvGTv49gN4liCPfiGVcBnuoJGEI1STHnJB-veSXec0llnt0TrCjvAy1sMm4qLM_ZcuaVBie8_lD5uwKpGirg10QbavZdnvy-6MRT5cPCM9roHeHjblNsjNwiJSnS4TN_K5aq7K-7yh8beYQ9yLhAJ-Shcc6Ums6g-w7-fmRYD-ysH0q1DbmbFegJACr9JMYq7KBKXCfK"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="bg-surface-container-lowest/90 backdrop-blur-md p-3 rounded-2xl">
+<p class="text-xs font-bold text-on-surface">Fix lighting</p>
+</div>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden group cursor-pointer aspect-square">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="majestic waterfall cascading down mossy green cliffs into a turquoise pool" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxqjQZnji1b8l9LFFl6FwUwds_FSqyuowl6nPEItvWOe2qseV50uXHCLaS42_GjY-JCyxbpVzI1rIVQJhWS2TrHIK2zahrZQwYZyax3Rb5sVpoVCvEvfZJ63-mKAdNuhPDUe1evyuy2VaOCgefv9LzT9edau6pxhMK6H8tOVVX_t9vAe5f76g1UsvvLlFdnDMSR9_txrg8hMhCly86sz6VwXPpQPQwmNmk5_6NDM7sXseYW96MqjcD8x9rz7_rmF2NH75RegJl"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="bg-surface-container-lowest/90 backdrop-blur-md p-3 rounded-2xl">
+<p class="text-xs font-bold text-on-surface">Archive screenshots</p>
+</div>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden group cursor-pointer aspect-square md:col-span-1">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="minimalist white product photography of a modern watch on a clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABMwG86OcGhWT8K5hNiNXTMLtTtBexdCOQbZluItPCchj21TXItXH4458-tut_7DfS9uMxJ9VYSjTxF14--9TE4Gl685Jf24RcEC63fPjtqwNDFGK8oJqPeXSgrMqBRuTfXchd7CtnACX5ACIt-jbB7FQzJQkQ2wPFTe4ncijpq6p4bR_EBMaqh3-uOmgAL8S4FRLwnFVaCkkz3CYlbdmejniEo85SKVefmP5jscPUY1dUWJVbc_O45E6IDQ-UoOiNj76ubncj"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-primary text-white p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined" data-icon="auto_fix_high">auto_fix_high</span>
+</div>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden group cursor-pointer aspect-square md:col-span-1">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="misty mountain range at dawn with layers of blue and grey silhouettes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcOjZNorrEU47X3WzAGJszN5PDCZ9Jgh-9PSWQEFFUl4VFPdkWPBDqiuT0qJR465i3SVcroVjkO9P42N_ahUUahOx_dSzTb4wANTNwX0QS1gvU-9H5CLwWZhRVK6wDCeYqIljuCzRL16kFljE6qqvwITv7v7lxrJp9lbyLR1gDtBCGzF7z_toyhkJKYnz1RJgnduTZ3Jz2svp1wqBNopTEB2kew6atbBNOlgz4CxeBHqYsb6K5xgWSr-p4rUwdXb4QkAGnsWeb"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="bg-surface-container-lowest/90 backdrop-blur-md p-3 rounded-2xl">
+<p class="text-xs font-bold text-on-surface">Create Cinematic photo</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Grid -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline text-2xl font-bold tracking-tight">Recent Photos</h2>
+<div class="flex gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-3 md:grid-cols-5 gap-1 md:gap-2">
+<div class="aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="winding river through a deep canyon with red rock walls and lush vegetation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_iWoJXFYWX0tVHOCMM_Rkqk6ivZGU2UjJ8L94K6mQ37k9dvZvtPOpZwXku5QGt_ldbWzhMmTD0Sm4GQS1V42bc59h7NOZkR2JPyaao9kFDS2e6ZCcNPylXteHoIJSYLY7VKgSo5ZeibPpCzHVnQheA9cfVekbG3LOS_A05voS616eIdCaoPb-uK1dGq3eH4cFXp3-BCPfWkVGkZgVp5D5SnwN7shiPfSm18_BF7v0tLtmSkKleJCFuN2zrHnwkYWqTDWLwoqK"/>
+</div>
+<div class="aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="hiker standing on a mountain peak overlooking a vast valley under a blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjZFCgWtbAyq3D92A1fNeEGKpFZbtHBYUTuLkwHapzL_xveQHnSTJ5w0i9iV6BtU8lOM_xKMzVzZlLvVVjGq9kpikjiBdrus4rG-IGqsLgz-ihBzlx3qb1WKvz6jei51kO8z_I7BfxAyT4Q7WlXyqZX8amQ_WPEpTEM96uDkc-eHCqDKE_PxgrS8wUxRZ4UjHpbb0Wd2vKXm1CBksCnCJAJ4d_YnoSUztbMgmVN4RNRuxI7W4ez55P1HpxcgJ6G1rXh4FpllMQ"/>
+</div>
+<div class="aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="sunlight streaming through a dense green forest with tall trees and ferns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqvXCsI43qR0XnvBMC101nrlY72VQLEJ2QqP_LeG99e4luyKeQrNZt7cASqcyv37rLYarQXE4eLzHQHugwywfYYlrkRkkdeUiSHEQ4mlucZl2aOflojz47m_4iZ5sd9EqSDHp_Gn-q-IVZRRJbb_fz5sRtQ-KlxwRb7sdEi_OK5o7IeDEXxPhP3tNHkMjcb1QmTKmZysQROyfDGW_BisagPvgJuh2i-2dHSWSm_nchN1YHZKU6x5_L0SXezHF5s1gLKRJE3C1s"/>
+</div>
+<div class="aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="rolling green hills with a single tree and a peaceful sunset sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5YXKZJX4NtN9nltMtHwYbfDDaHR1XGMpMvJl1TkdOWveGvNrv0bcaiDeVsgXTGBwpPkCUBbP1ZiUbgpqkptVrKWJitbU6pQv6Bc1lzP0u8uqAh4tmSXDdk8Yk8h798ygyAFUzcCITOhOx8EGfy4Y0NZ180ldLgATtzf69tZCBtQLF0QX5gZLbSRVHUyUgpzdvk_eBIUo4Bse7ve5DNDcEzfpcxECwA11snLaFAznFBxc1s9DGALmmPSTRCByS6Scx-4MTFnoM"/>
+</div>
+<div class="aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up of colorful autumn leaves with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoFnCzgsICwzumOM1Y2lYvBTWPOcfSAnnEeaRYO-VxbPbhdXkCG9OM_ZPNTWfSblhimaHpQC5-DFaYSvF9l7wH6e_ZAwjYEQ-1Ap6CtthWcQ0C1HK2lGKldtraZcjCiEGuJFF0DxnuTkVE_iNNdKmFXl9xpu5kTIZBG1Csl5PsAqO_2xsw-XWYmm2ZQMrrfITxdrCO1FNnS9WFGX43JXDdgifoSCWaup0NJH3u6ZsOTLaCQVn__IomysgeLOVLexHBTdYKporz"/>
+</div>
+<div class="aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="calm ocean waves gently washing over a sandy beach at twilight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWKDziUcxnik2PbMMqtfE2__Yr8TEDmdvVY0ZpL0YnZcl12COdeaWnfjJorm8p7CGfPmUrgTwt0xTahJdUlle9sQhhnGsGFy7jU3O_74Tpk_r7BooFFG_ZdRaDOjQt17CHvoVmPIQzSBYsIOm_eMMRy-VeD6JJffc_atgNVEDF-9FhZFhzk9nZaSdRxPRZZqOG2viz3w8OghsgbHbL7VnUbdEOwaT4olT3vmge4zH4jAIwJAQJ1iy8Ag3cre55zpB0cVCA3bjV"/>
+</div>
+<div class="aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="lush green valley with a small stream and mountains in the distance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfaqbF-UjQ4Rj_3Rqou4XMgCTmu-uh3Yt33OQVnR30GImF2LDO-8i7ukfPwt9ZNcLw3MK7Pxd20-aH3G_l-AJoeDwrVl9ePYju3doxVDqCJWQnNIiwW-8sIg3LyE58XlOlvWAbdhbr3ZjriCyFJ2gOQVGofMl6rkhgnuH3LHX_4rV0L7O48LLmhLWZnZ4gN9KcIOW-6b7haBr8t8l5043VvqzmXxQQ6kxNH0LYD-qTDUAUUcLb39I6r6S8ISWltKF8c5X_Jbt7"/>
+</div>
+<div class="aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="aerial view of a winding road through a dense green forest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW1r5KfGzTMuLQJuDKemOx5mFWBfaNKL1BPOO_cP5wTRmOH3zRgsdUeFzdX9LJdc78zzafd8lcgkQd-IwU6g-VCjCALwk5xQForRhlIdiy1yMbOvVdeDL7i2on74k2X623yHBuGE71z80v2bTSgSALV6tufquxhLgj7famB7yh2qEindWafsjYaRe7UxEOjv0Z5E48qdyavzVRwYEBBCz1Fe3QnyU0baDW7Vxt89Y9dWGpnI4wUffIwPO0gFUdavqVCPEpu_oK"/>
+</div>
+<div class="aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="wooden footbridge crossing a small forest stream with soft sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJx8NTogga72Vl79qvkNa0FvAoUpCiPH6HeqfIpiXrNXl1PC2WqtigNwjmNJPh2PpNc3FeMIRaSwgsc9g_a-zJLs99EdMOl4R1IjYfqnWhREsrhcWj_M7sEP6fIcMUhrWVnzc71Tnlvt_b4EwH9oxcj2nZySzgfoeXHvoERR-kiqzakBiN0dKgINolRACTdT-Kx8-mbOOfnFwmJu2xfjK-tYxwoFSP7pvGvCq9JxpN_-PE_UB7l8fvxdGrzJkLE1qR2zWFjJ39"/>
+</div>
+<div class="aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="mystical mountain landscape with fog settling in the valleys" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfhJ2YJskn-bxe3gRPCmzOUHot_Y_14MwqQSncQL4nez0TEy1A78Wo92Ajd_G6TSNi3DELZCqC8Mhhqlz-Vghgqq7tSibeiqV1HS-ncnviiJEU1wYcsBiqPooz89icniIcveSyrWhD1i39_uNfbAkAgqpw5s85WND5VTS8FiW9UTllN8wqbc7Kwvqw9cH88HqF_q8LHIHxKYbXMeFEE7V1BvkvFCmHI3oMBkW3B84XpX2L0LVCn0eE4xwnUoL2afKA9TmvHk6F"/>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual Floating Bar (BottomNavBar) -->
+<nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-around items-center px-4 py-2">
+<div class="bg-white/85 dark:bg-slate-900/85 backdrop-blur-3xl fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-md rounded-full flex justify-around items-center px-4 py-2 shadow-2xl shadow-blue-500/10">
+<!-- Photos Active -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 to-blue-400 text-white rounded-full px-5 py-2 hover:scale-105 transition-transform duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="photo_library" style="font-variation-settings: 'FILL' 1;">photo_library</span>
+<span class="text-[10px] font-bold mt-0.5 Manrope label-md tracking-wide">Photos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:scale-105 transition-transform duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-[10px] font-semibold mt-0.5 Manrope label-md tracking-wide">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:scale-105 transition-transform duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-[10px] font-semibold mt-0.5 Manrope label-md tracking-wide">Sharing</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:scale-105 transition-transform duration-300 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-[10px] font-semibold mt-0.5 Manrope label-md tracking-wide">Library</span>
+</a>
+</div>
+</nav>
+<!-- FAB for adding photos (Contextual for Dashboard) -->
+<button class="fixed bottom-24 right-6 md:right-12 w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+</body></html>

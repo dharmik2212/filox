@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Semester Cleanup - Filox</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#f39cfb",
+                        "on-secondary": "#f2f1ff",
+                        "on-tertiary": "#ffeefb",
+                        "primary": "#0058ba",
+                        "primary-fixed": "#6c9fff",
+                        "surface-container-high": "#dde1ff",
+                        "surface-container-highest": "#d5dbff",
+                        "on-secondary-fixed": "#00298c",
+                        "on-tertiary-fixed-variant": "#6a1f77",
+                        "on-error": "#ffefee",
+                        "outline-variant": "#a2abd7",
+                        "tertiary-fixed": "#f39cfb",
+                        "on-background": "#232c51",
+                        "surface-dim": "#cad2ff",
+                        "surface-variant": "#d5dbff",
+                        "on-secondary-container": "#1f3ea2",
+                        "on-error-container": "#570008",
+                        "tertiary-fixed-dim": "#e48fed",
+                        "on-surface": "#232c51",
+                        "surface": "#f7f5ff",
+                        "inverse-on-surface": "#929bc6",
+                        "on-primary-fixed-variant": "#002a60",
+                        "on-primary-container": "#00214e",
+                        "error-container": "#fb5151",
+                        "on-secondary-fixed-variant": "#2b48ac",
+                        "on-tertiary-fixed": "#41004d",
+                        "background": "#f7f5ff",
+                        "on-primary-fixed": "#000000",
+                        "primary-dim": "#004da4",
+                        "secondary": "#3854b7",
+                        "secondary-fixed": "#c6cfff",
+                        "tertiary": "#883c93",
+                        "error": "#b31b25",
+                        "tertiary-dim": "#7a2f86",
+                        "on-primary": "#f0f2ff",
+                        "inverse-primary": "#4a8eff",
+                        "error-dim": "#9f0519",
+                        "surface-bright": "#f7f5ff",
+                        "surface-tint": "#0058ba",
+                        "secondary-fixed-dim": "#b3c1ff",
+                        "surface-container": "#e4e7ff",
+                        "inverse-surface": "#020a2f",
+                        "secondary-dim": "#2a47ab",
+                        "secondary-container": "#c6cfff",
+                        "outline": "#6c759e",
+                        "surface-container-low": "#efefff",
+                        "primary-fixed-dim": "#5091ff",
+                        "on-surface-variant": "#505a81",
+                        "primary-container": "#6c9fff",
+                        "on-tertiary-container": "#60136d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    "boxShadow": {
+                        "sunlight-ambient": "0 16px 32px -8px rgba(35, 44, 81, 0.06)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .headline-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tap-highlight-none { -webkit-tap-highlight-color: transparent; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dark/80 backdrop-blur-2xl shadow-sunlight-ambient dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-highest/50 p-2 rounded-full transition-all active:scale-90">
+<span class="material-symbols-outlined text-blue-600">close</span>
+</button>
+<h1 class="Plus Jakarta Sans headline-sm tracking-tight font-bold text-on-surface">Semester Cleanup</h1>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-label-md font-bold text-primary mr-2">8 selected</span>
+<button class="bg-surface-container-highest/50 p-2 rounded-full transition-all hover:scale-105">
+<span class="material-symbols-outlined text-blue-600">delete</span>
+</button>
+<button class="bg-surface-container-highest/50 p-2 rounded-full transition-all hover:scale-105">
+<span class="material-symbols-outlined text-blue-600">archive</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-6xl mx-auto">
+<!-- Selection Statistics / Quick Filter -->
+<section class="mb-10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col gap-1 transition-transform hover:scale-[1.02]">
+<span class="text-label-sm font-semibold text-secondary uppercase tracking-widest">Storage Saved</span>
+<span class="text-headline-sm font-bold headline-font">1.2 GB</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col gap-1 transition-transform hover:scale-[1.02]">
+<span class="text-label-sm font-semibold text-secondary uppercase tracking-widest">Identified Duplicates</span>
+<span class="text-headline-sm font-bold headline-font">24 files</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col gap-1 transition-transform hover:scale-[1.02]">
+<span class="text-label-sm font-semibold text-secondary uppercase tracking-widest">Remaining</span>
+<span class="text-headline-sm font-bold headline-font">142 items</span>
+</div>
+</div>
+</section>
+<!-- Chronological Section: Today -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="headline-font text-headline-sm font-bold">Today</h2>
+<p class="text-on-surface-variant text-body-sm">Dec 14, 2023 • 12 items</p>
+</div>
+<button class="text-primary font-bold text-label-md hover:underline">Select all</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+<!-- Selected Item 1 -->
+<div class="relative aspect-square group cursor-pointer transition-all">
+<div class="absolute inset-0 bg-primary/10 rounded-xl border-2 border-primary z-10"></div>
+<div class="absolute top-3 left-3 z-20 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<img class="w-full h-full object-cover rounded-xl shadow-sm" data-alt="Close up of a blackboard covered in complex physics equations and chalk dust under warm indoor lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoy9Bysc0AbXgx4QSnBqohAlam0UbgqJxFMFE5FTl5pFXSrjjyQZaSmm-AZG6H--Xgtf1YEU8nuLh96HrwP63dVHCY0Gu-BvPjSY1bFq_2dKBDuKwmfEqxu7RRfWiBK7Ul3sodafykDAw7ixDO8YK5aDhdTSwFtXZ2Gqfebkeu4FfHmC24r7_zRwpSOW0Q3sRO3mVukLTcP6vAw3-DfHRgj-PhYS87XhW_iul_rxSdc0au93W-cxUau9Kf7TYY_GDdtSXezhra"/>
+</div>
+<!-- Selected Item 2 -->
+<div class="relative aspect-square group cursor-pointer transition-all">
+<div class="absolute inset-0 bg-primary/10 rounded-xl border-2 border-primary z-10"></div>
+<div class="absolute top-3 left-3 z-20 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<div class="w-full h-full bg-surface-container-high rounded-xl flex flex-col items-center justify-center p-4 text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">description</span>
+<p class="text-label-sm font-bold truncate w-full">Thermodynamics_Final.pdf</p>
+</div>
+</div>
+<!-- Unselected Items -->
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<div class="absolute top-3 left-3 z-20 w-6 h-6 bg-white/40 backdrop-blur-md rounded-full border border-white/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img class="w-full h-full object-cover rounded-xl" data-alt="High angle shot of a messy study desk with open notebooks, highlighters, and a laptop screen showing code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL3LOCnEcNssrBDecd8Igad4-Xp8XFGAA3BVpQnRrAqxC0zYcEjX8BTO0NHjJJTzQbAdj7GEKCnqqO7dRsTV51MQYqIyEIksVUbdrqNeFTr8spoifzwZFW13929k1eLLa9onQgTjNKRm-V1l_kREpx3z6vpGj5NHuv7fRo3EkDUkGfNnBaX0e-FQSn73pp8JgL7NrZVn1_MRPrmmYfcpbbknc9p361DSu_RY4lC9cp2GZC-zm6BvrG9uLKadkCUuig3tfmm6wr"/>
+</div>
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<div class="absolute top-3 left-3 z-20 w-6 h-6 bg-white/40 backdrop-blur-md rounded-full border border-white/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img class="w-full h-full object-cover rounded-xl" data-alt="Detailed view of handwritten lecture notes in a spiral notebook with neat diagrams and multi-colored ink" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbBCtY2lNAVdQrUbhAaPSpTLPICHpq_dzvxfB4fKRJjASaCW5qmfxIEGdD9caLO1UBUB2slTDWS1aIKvmAIMmQbN57k2OhtZatUWGdhp5fWJpnkYzCGLeTl6TqZMKDEdfkTX0YykRl1MjoXuA1z1IKA573ocVsYQWbKRAdLhY483XrFTZkXKApVmC7bDF3g6aufs-6k-EzOR3l5Z-6yRgGNVrKeaA0RrE_k_nOTNfSwjs4LVd8eN7RjTtqEbqCFVD2AOv1xPg4"/>
+</div>
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<div class="absolute top-3 left-3 z-20 w-6 h-6 bg-white/40 backdrop-blur-md rounded-full border border-white/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-full h-full bg-surface-container-high rounded-xl flex flex-col items-center justify-center p-4 text-center">
+<span class="material-symbols-outlined text-secondary text-4xl mb-2">picture_as_pdf</span>
+<p class="text-label-sm font-bold truncate w-full">Lab_Report_04.pdf</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Chronological Section: Yesterday -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="headline-font text-headline-sm font-bold">Yesterday</h2>
+<p class="text-on-surface-variant text-body-sm">Dec 13, 2023 • 34 items</p>
+</div>
+<button class="text-primary font-bold text-label-md hover:underline">Select all</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Rows of library bookshelves with soft bokeh lighting and a warm academic atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMdim7xGYEXLud55rIwGcK6qx_Td9-iI6NImeKDwR9_0l9Pq5JcfpqCkkgbVXkITUxikjHxT8N7KpSTGEyX-qi0aidL4_Hx3Zhnx0DZRQCT9UvRf8Qjso0CFD2n52Gadw7qKoJeAIH69B9ArejPdflxzeYhJ2FMnZWlYZZsOEKhumoXUn4Ws94KvCJNQbVtKyD1U-yuORzQOB6JCJhiensoLJULpjZNw6gWUznFxB5TMf0LzvfIQ7xavxv8Cjm0TzeM1RXBOFk"/>
+</div>
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<div class="absolute inset-0 bg-primary/10 rounded-xl border-2 border-primary z-10"></div>
+<div class="absolute top-3 left-3 z-20 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<img class="w-full h-full object-cover rounded-xl shadow-sm" data-alt="A cup of coffee next to a pen and paper on a wooden desk during a morning study session" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCbmIvYsEgZ6wHIYJdNJ6loCykAEFpiixClNX5hBZ1VDDUWHvz41kvUTPpJ7SdMRN1Ycq5LMYg317up6fR9v2V4EMKEFD3agxNohTJHZeHZTP-Zu7z8e1RMajejHCyH5VFgx_w_E1oNdsCMOJkZtBEXqDxtHIgl0H9Tdx2ItWEQGQV4weKPgCIUT00SDgJCreZSVSJ-MJQEquKEY3jBxiTV1wclT6vIrdZQVd_bs1u--zHUsgwoDMZTlnw_4khL_KtPil0NiAW"/>
+</div>
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Quiet university library study area with modern furniture and large windows letting in afternoon light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq8JekW-UhC96nr1qJHYRXXTzan_PKti2oPYd-7-qL-rrVF67BDf5HDVfiPZ2byovT6KCRfMf_7UrxO4d16O-Lp3HyuLxb2JWLCT14mw6F32U5cLxSyCL2n9GNE2Jfp0CNF3D8LdGIhw70FWrPtl5hJrs91RFRTXSd41gIOZju8cNjySoQWZ1loKe_uVc8wu2OTGvdlixpIa6KMsnp64kyzqqX6DELto7bBK0GMNu9Z5YRjaKvXEo6-QpyAileWVCeDcnvZc4J"/>
+</div>
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Macro shot of a highlighter mark on a textbook page with blurred surrounding text" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHyQJcrxQZnXsC-RA2b1QlLgdyc3jtOEagjQL-gvuQXdWlOY1CAu2eaMB8bBs76DdcSKPe2SpcBChnT85swTINYoz0zjFgKgajis5NiG1emGFomtdDAw_fSsIZbNPjHnqMRgb5SLLhQPCTkB3a40qtyNgkERt8NkED62YBvru6Fw0W5uom9wPyfIa_XLQdAsw-Z3h39_CTFDDGEKW5PoEczBsda8se-1TlQGmlg44n14RItmAZaRKhxdH9ZHqm6kesmJrpkhKi"/>
+</div>
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<div class="absolute inset-0 bg-primary/10 rounded-xl border-2 border-primary z-10"></div>
+<div class="absolute top-3 left-3 z-20 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<div class="w-full h-full bg-surface-container-high rounded-xl flex flex-col items-center justify-center p-4 text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">article</span>
+<p class="text-label-sm font-bold truncate w-full">History_Project.docx</p>
+</div>
+</div>
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Group of students working together around a table with laptops and papers in a bright common area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeKMMKp25OBDNMfmqfHiLmOCWvyf_GbhWhDFmLDFVeXJZinx2Px5oSKlwimuw2KnYNsEMhg5uFzqOxBnD0dhcPVHooiPnvMnGhMQGXeUntDKe_DDUmSkF4nMaXqnWrnDB_oDs7whK_1yuE6stOSBzNY15jIinDchHH4qDCzEH4kXLosyYEyzojhAl2tqEr1IgY3yzJhGf9wLMoRxNAPq5RsUGQZ43ceIF0sudIWOJbyNzQOUNkaY_G5p9ZYdm1Ne333TEX8r7J"/>
+</div>
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Minimalist workspace with a laptop and a single succulent plant on a white desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5Xw0aOd0d6x5XqcN5EFHvwpfYLFxl459Fc7lOJkwmF27amcLVI5U34EV0mVZqMGJ02KV_36bl0jSwdWZDocN_IYZ2_CikIpM4LuggOl9HUGSDG2FkGKPJFcSxrpZYK-39bQSRbxE61MsF8OwFxsA7i-0vaAY0XLH3n4DKNg62ZuCxs4tJHEpWd1RnbhboA7ZCt-4VFx9vE22VY376w3lk-LqlFNBhTNTJMuGpt0qGFSc8uwbhgWxQ6vymgG_P6dU7yzfQxeFy"/>
+</div>
+<div class="relative aspect-square group cursor-pointer transition-all hover:scale-[0.98]">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Top down view of a colorful student backpack and various school supplies organized on the floor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4Mlt2EHrHWDbXoxpN1p0xYXe33khxjdjlx3_7msjhaKfZ9T1RsGV2ugKLeYOMLtAbxxW7z4iOAXtpA0mCReGRkbjzm3FWHsUAKR_H3dm7z8MMaLa3noMyLEixYrAYI7fdyZsvY5cG17ulGp6TX1jubuH96_U1JOr45_h-RIqrjvpLBOAPc53cmQ16sR7qTEmm4dwf1yGenBFabxHYnZRoZxUVOfh3TgG29byrjN5XdFJF6NU2e_0UGi9Vry7TdiUh0Rgj8GGM"/>
+</div>
+</div>
+</section>
+<!-- Earlier in the Month -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="headline-font text-headline-sm font-bold">Earlier in December</h2>
+<p class="text-on-surface-variant text-body-sm">Dec 1 - Dec 12 • 96 items</p>
+</div>
+<button class="text-primary font-bold text-label-md hover:underline">Select all</button>
+</div>
+<!-- Asymmetric Bento-style Grid for earlier content -->
+<div class="grid grid-cols-4 gap-4 auto-rows-[120px]">
+<div class="col-span-2 row-span-2 relative group cursor-pointer transition-all hover:scale-[0.99]">
+<div class="absolute inset-0 bg-primary/10 rounded-xl border-2 border-primary z-10"></div>
+<div class="absolute top-3 left-3 z-20 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<img class="w-full h-full object-cover rounded-xl" data-alt="Candid shot of people studying in a light-filled modern architectural space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFiMDtb45nfW6_f3Vvt6ZMzMm3osIQjiQCBo7p_jQ3R8HUMb_eQhAgoqjAz5vyTxauQ_JVhQI1O9CVHlw5hVvvhNEus4jc4unsniAtd41wsT49mr9pc4honLGdn5LbskDTay5asQ3T81hdQEG9n9Cglq5_2m7kVx60oAPkPr3je7hTSgFdXEAsSvdovUaqjb9umeSryktiJiaFZ07G0RS3wF8UD5D7P_WNQwZ6UPfWcDiwLIwfsdknsZ2phAq8Yf3xK2-sJ01p"/>
+</div>
+<div class="col-span-1 row-span-1 relative group cursor-pointer transition-all hover:scale-[0.99]">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Abstract colorful light patterns on a wall creating a modern art feel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc5EpHx4Ww8FdmE5r0Uew-lJ4qb0lLJeGl7zMmM1vbSx8rMA7oxkwXbwmGnak-pmeP9wyzs-7CqelLV4QtSCQbsbK1kbC3Ltflzm-33oMayEaGwzpOaiy9Ijt_CxWwfEmqr7FnM3Y3-B7DlXYJNeZx4rJZIrMcH9YI5OA_NC6sSKgX6_BnruAcVAdxw2jdEljEGw9SxzTGKI7vYTz3m6ZqGiw0RDkUR4tUm7sySuu3IFcjiQTe_PpzK4_-zm3DuqMKtwt1hB_t"/>
+</div>
+<div class="col-span-1 row-span-2 relative group cursor-pointer transition-all hover:scale-[0.99]">
+<div class="absolute inset-0 bg-primary/10 rounded-xl border-2 border-primary z-10"></div>
+<div class="absolute top-3 left-3 z-20 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<img class="w-full h-full object-cover rounded-xl" data-alt="Close-up of old books with aged pages stacked in a cozy corner" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlPWRbWGtJiPDOFgCQXhaa7uF94HR4NSQQY_-FW4G8uWMmqqq5Q-XMNTCEUuycVfB5DKfIggl89eAT7NqNrNx4EWwfozaiktg6hRxB4LB7JK_KXrCcBJiQZWQv7Wn7r-xMwRYS1LKiLJdBto4ZYG8LTAuHW5fmnAn1d-nEpFgEMHGLZgjvWn-QjtT-SO_BDrUI5MyCkiUTvgMd8wkcCoV23uvY7LHNGKVLerRm8Lr0CQNKdK4mISkJEPIIW3q53PjneGMEiG7E"/>
+</div>
+<div class="col-span-1 row-span-1 relative group cursor-pointer transition-all hover:scale-[0.99]">
+<div class="w-full h-full bg-surface-container-high rounded-xl flex flex-col items-center justify-center p-2 text-center">
+<span class="material-symbols-outlined text-secondary text-2xl mb-1">movie</span>
+<p class="text-label-xs font-bold truncate w-full">Lecture_Recording.mp4</p>
+</div>
+</div>
+<div class="col-span-2 row-span-1 relative group cursor-pointer transition-all hover:scale-[0.99]">
+<div class="absolute inset-0 bg-primary/10 rounded-xl border-2 border-primary z-10"></div>
+<div class="absolute top-3 left-3 z-20 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<img class="w-full h-full object-cover rounded-xl" data-alt="High quality close up of an open classic literature book with dramatic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA34a-e3qu5SR81sbuPFWI70fZFH4jv1mkmInP2i2RMJTr4SHDqssDz4bjhs1JFv4K8bbNUSiTqoRVZZJeQ0tXB_erfNgW0wYnn99sGY9ZQQGBAjZFZIEOftj3FLHu5Q3sQNaWd73Wm-0k5xgHWc_HKpiIxKis-XBBUPzyPhrwCeibjaNTMLxFkU5XXOjf4tnu1srbypVnf8H0scpdvKgj3fQ9tz2cFyoErhhgSY2ukVWX3YtA6RynhtS8b62zR6EHwT2mLmDDu"/>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual Floating Action Button -->
+<button class="fixed bottom-28 right-8 z-50 bg-gradient-to-br from-primary to-primary-container text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">auto_fix_high</span>
+</button>
+<!-- BottomNavBar (Signature Google Photos style) -->
+<nav class="fixed bottom-8 left-0 right-0 z-50 flex justify-around items-center px-4 py-2">
+<div class="bg-white/85 dark:bg-slate-900/85 backdrop-blur-3xl shadow-2xl shadow-blue-500/10 flex justify-around items-center px-4 py-2 w-[90%] max-w-md rounded-full">
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">photo_library</span>
+<span class="Manrope label-md font-semibold tracking-wide">Photos</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">search</span>
+<span class="Manrope label-md font-semibold tracking-wide">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">group</span>
+<span class="Manrope label-md font-semibold tracking-wide">Sharing</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 to-blue-400 text-white rounded-full px-5 py-2 hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="Manrope label-md font-semibold tracking-wide">Library</span>
+</div>
+</div>
+</nav>
+</body></html>
